@@ -29,10 +29,11 @@ var orm = {
     selectAll: function(table, cbfunc){
         var sql = "SELECT * FROM " + table + ";";
         console.log(sql);
+        console.log("orm.js");
         connection.query(sql, function(err, data){
             if(err) throw err;
             cbfunc(data);
-        })
+        });
     },
     insertOne: function(table, cols, vals, cbfunc){
         var sql = "INSERT INTO " + table;
@@ -40,7 +41,7 @@ var orm = {
         sql += cols.toString();
         sql += ")";
         sql += "VALUES ("
-        sql += pringQuestionMarks(vals.length);
+        sql += printQuestionMarks(vals.length);
         sql += ")";
         console.log(sql);
 
@@ -63,3 +64,5 @@ var orm = {
         });
     }
 }
+
+module.exports = orm;

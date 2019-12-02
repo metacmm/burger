@@ -45,7 +45,7 @@ var orm = {
         sql += ")";
         console.log(sql);
 
-        connection.query(sql, function(err, data){
+        connection.query(sql, vals, function(err, data){
             if (err) throw err;
             cbfunc(data);
         })
